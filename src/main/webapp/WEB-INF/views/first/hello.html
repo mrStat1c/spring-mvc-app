@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Page</title>
+</head>
+
+<body>
+
+<p>Hello!</p>
+<a href="/mvc-app/goodbuy">Say goodbuy</a>
+<br>
+<a href="/mvc-app/exit">Exit</a>
+
+<!--th - тег из Timeleaf. Внедрение значения атрибута message из модели-->
+<p th:text="${message}" />
+
+</body>
+</html>
