@@ -5,10 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
+import ru.amelin.mvc.HeroProvider;
 
 @Controller
 //RequestMapping добавляет к началу всех url префикс
@@ -62,4 +59,22 @@ public class FirstController {
         model.addAttribute("result", result);
         return "first/calculator";
     }
+
+    @GetMapping("/choose-hero")
+    public String chooseHero() {
+        return "first/choose-hero";
+    }
+
+    @GetMapping("/hero")
+    public String hero(@RequestParam("heroName") String heroName,
+                       Model model) {
+        model.addAttribute("heroName", heroName);
+        model.addAttribute("heroDescription", HeroProvider.getHeroDescription(heroName));
+//        todo картинка не находится
+        model.addAttribute("imgPath",
+                "/img/" + heroName.toLowerCase().replace(" ", "_") + ".jpg");
+        return "first/hero";
+    }
+
+
 }

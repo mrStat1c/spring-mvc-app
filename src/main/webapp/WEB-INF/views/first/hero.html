@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Choose your hero!</title>
+</head>
+
+<body>
+
+<form action="hero">
+    <label for="heroes">Choose your hero!</label>
+    <select id="heroes" name="heroName">
+        <option value="Soler">Soler</option>
+        <option value="Shao Kahn">Shao Kahn</option>
+        <option value="Towelie">Towelie</option>
+        <option value="Unnamed">Unnamed</option>
+        <option value="Serious Sam">Serious Sam</option>
+        <option value="Farmer">Farmer</option>
+        <option value="Blood Rayne">Blood Rayne</option>
+        <option value="T900">T900</option>
+        <option value="Ameliniv">Ameliniv</option>
+        <option value="John Snow">John Snow</option>
+    </select>
+    <input type="submit" value="Get Info!">
+</form>
+
+<p th:text="${heroName}"></p>
+<p th:text="${heroDescription}"></p>
+
+<img th:src="${imgPath}">
+
+
+</body>
+</html>
+
