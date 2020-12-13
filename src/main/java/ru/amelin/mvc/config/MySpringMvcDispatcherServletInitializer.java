@@ -1,6 +1,10 @@
 package ru.amelin.mvc.config;
 
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 
 /**
  * Замена web.xml
@@ -23,4 +27,20 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
 //      любые запросы будут обрабатываться DispatcherServlet
         return new String[]{"/"};
     }
+
+
+    //запускается при старте приложения
+    @Override
+    public void onStartup(ServletContext aServletContext) throws ServletException {
+        super.onStartup(aServletContext);
+        registerHiddenFieldFilter(aServletContext);
+    }
+
+//  Добавляет к приложению фильтр hiddenHttpMethodFilter, который перехватывает все входящие http запросы,
+//  смотрит скрытое поле _method и перенаправляет запросы на нужные методы контроллера
+    private void registerHiddenFieldFilter(ServletContext aContext) {
+        aContext.addFilter("hiddenHttpMethodFilter",
+                new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
+    }
+
 }
