@@ -1,4 +1,4 @@
-package ru.amelin.mvc.controllers;
+package ru.amelin.mvc.dao;
 
 import org.springframework.jdbc.core.RowMapper;
 import ru.amelin.mvc.models.Person;

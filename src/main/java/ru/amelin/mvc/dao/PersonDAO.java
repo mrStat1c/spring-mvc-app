@@ -3,7 +3,6 @@ package ru.amelin.mvc.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import ru.amelin.mvc.controllers.PersonMapper;
 import ru.amelin.mvc.models.Person;
 
 import java.util.List;
